@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const app = require('./app')
+const { DB_HOST } = require('./config')
 
-const DB_HOST = 'mongodb+srv://Sandra:yxlJASbyf6sr4ExM@cluster-node.hmyyy9v.mongodb.net/db-contacts'
 
 mongoose.connect(DB_HOST)
   .then(() => {
