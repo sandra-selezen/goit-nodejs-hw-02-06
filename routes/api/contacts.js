@@ -13,6 +13,8 @@ router.post('/', ctrl.addContact)
 
 router.put('/:contactId', isValidId, ctrl.updateContact)
 
+router.patch('/:contactId/favorite', isValidId, ctrl.updateStatusContact)
+
 router.delete('/:contactId', isValidId, ctrl.removeContact)
 
 module.exports = router
