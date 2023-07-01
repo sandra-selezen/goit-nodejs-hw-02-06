@@ -1,15 +1,16 @@
-const contacts = require('../models/contacts')
+const Contact = require('../models/contact')
+
 const { HttpError, ctrlWrapper } = require('../helpers')
 const { addSchema } = require('../schemas')
 
 const listContacts = async (req, res) => {
-  const result = await contacts.listContacts()
+  const result = await Contact.find()
   res.json(result)
 }
 
 const getContactById = async (req, res) => {
   const { contactId } = req.params
-  const result = await contacts.getContactById(contactId)
+  const result = await Contact.findById(contactId)
   if (!result) {
     throw HttpError(404, 'Not found')
   }
@@ -21,7 +22,7 @@ const addContact = async (req, res) => {
   if (error) {
     throw HttpError(400, 'Missing fields')
   }
-  const result = await contacts.addContact(req.body)
+  const result = await Contact.create(req.body)
   res.status(201).json(result)
 }
 
@@ -31,7 +32,7 @@ const updateContact = async (req, res) => {
     throw HttpError(400, 'Missing fields')
   }
   const { contactId } = req.params
-  const result = await contacts.updateContact(contactId, req.body)
+  const result = await Contact.findByIdAndUpdate(contactId, req.body)
   if (!result) {
     throw HttpError(404, 'Not found')
   }
