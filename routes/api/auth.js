@@ -12,4 +12,6 @@ router.post('/login', validateBody(loginSchema), ctrlWrapper(ctrl.loginUser))
 
 router.get('/current', authenticate, ctrlWrapper(ctrl.getCurrentUser))
 
+router.post('/logout', authenticate, ctrlWrapper(ctrl.logoutUser))
+
 module.exports = router
