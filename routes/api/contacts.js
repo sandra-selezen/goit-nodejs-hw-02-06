@@ -1,10 +1,10 @@
 const express = require('express')
 
-const router = express.Router()
-
 const { contacts: ctrl } = require('../../controllers')
 const { ctrlWrapper } = require('../../helpers')
 const { isValidId } = require('../../middlewares')
+
+const router = express.Router()
 
 router.get('/', ctrlWrapper(ctrl.listContacts))
 
