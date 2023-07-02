@@ -35,3 +35,11 @@
 - If there is no body, returns json with key {"message": "missing fields"} and status 400
 - If everything is fine with body, call the updateContact(contactId, body) function (write it) to update the contact in the contacts.json file
 - Based on the result of the function, it returns an updated contact object with a status of 200. Otherwise, returns json with "message": "Not found" key and 404 status
+
+### PATCH / api / contacts /: contactId / favorite
+
+- Gets the contactId parameter
+- Gets body in JSON format with the update of the favorite field
+- If there is no body, returns JSON with key {"message": "missing field favorite"} and status 400
+- If everything is fine with body, call the updateStatusContact(contactId, body) function (write it) to update the contact in the database
+- Based on the result of the function, it returns an updated contact object with a status of 200. - Otherwise, returns JSON with "message": "Not found" key and 404 status
