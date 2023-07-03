@@ -12,6 +12,8 @@ router.post('/login', validateBody(loginSchema), ctrlWrapper(ctrl.loginUser))
 
 router.patch('/subscription', authenticate, validateBody(updateSubscriptionSchema), ctrlWrapper(ctrl.updateSubscriptionUser))
 
+router.patch('/avatars')
+
 router.get('/current', authenticate, ctrlWrapper(ctrl.getCurrentUser))
 
 router.post('/logout', authenticate, ctrlWrapper(ctrl.logoutUser))
