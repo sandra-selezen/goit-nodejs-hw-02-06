@@ -10,7 +10,7 @@ router.post('/register', validateBody(registerSchema), ctrlWrapper(ctrl.register
 
 router.post('/login', validateBody(loginSchema), ctrlWrapper(ctrl.loginUser))
 
-router.patch('/subscription', validateBody(updateSubscriptionSchema))
+router.patch('/subscription', authenticate, validateBody(updateSubscriptionSchema), ctrlWrapper(ctrl.updateSubscriptionUser))
 
 router.get('/current', authenticate, ctrlWrapper(ctrl.getCurrentUser))
 
