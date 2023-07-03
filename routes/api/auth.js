@@ -2,7 +2,7 @@ const express = require('express')
 const { users: ctrl } = require('../../controllers')
 const { ctrlWrapper } = require('../../helpers')
 const { validateBody, authenticate, upload } = require('../../middlewares')
-const { registerSchema, loginSchema, updateSubscriptionSchema, updateAvatarSchema } = require('../../schemas')
+const { registerSchema, loginSchema, updateSubscriptionSchema } = require('../../schemas')
 
 const router = express.Router()
 
