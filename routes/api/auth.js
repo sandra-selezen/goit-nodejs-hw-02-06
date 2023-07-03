@@ -1,8 +1,8 @@
 const express = require('express')
 const { users: ctrl } = require('../../controllers')
 const { ctrlWrapper } = require('../../helpers')
-const { validateBody, authenticate } = require('../../middlewares')
-const { registerSchema, loginSchema, updateSubscriptionSchema } = require('../../schemas')
+const { validateBody, authenticate, upload } = require('../../middlewares')
+const { registerSchema, loginSchema, updateSubscriptionSchema, updateAvatarSchema } = require('../../schemas')
 
 const router = express.Router()
 
@@ -12,7 +12,7 @@ router.post('/login', validateBody(loginSchema), ctrlWrapper(ctrl.loginUser))
 
 router.patch('/subscription', authenticate, validateBody(updateSubscriptionSchema), ctrlWrapper(ctrl.updateSubscriptionUser))
 
-router.patch('/avatars')
+router.patch('/avatars', authenticate, upload.single('avatar'), ctrlWrapper(ctrl.updateAvatarUser))
 
 router.get('/current', authenticate, ctrlWrapper(ctrl.getCurrentUser))
 
