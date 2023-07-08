@@ -1,5 +1,8 @@
 const bcrypt = require('bcrypt')
 const nanoid = require('nanoid')
+require('dotenv').config()
+
+const { BASE_URL } = process.env
 const { User } = require('../../models')
 const { HttpError, sendEmail } = require('../../helpers')
 
@@ -19,8 +22,10 @@ const registerUser = async (req, res) => {
   const verifyEmail = {
     to: email,
     subject: 'Verify your email',
-    html: ``,
+    html: `<p>Click <a target="_blank" href="${BASE_URL}/api/users/verify/${verificationToken}">verify email</a></p>`,
   }
+
+  await sendEmail(verifyEmail)
 
   res.status(201).json({
     email: newUser.email,

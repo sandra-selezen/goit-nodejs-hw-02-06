@@ -8,6 +8,8 @@ const router = express.Router()
 
 router.post('/register', validateBody(registerSchema), ctrlWrapper(ctrl.registerUser))
 
+router.get('/verify/:verificationToken', ctrlWrapper(ctrl.verifyUser))
+
 router.post('/login', validateBody(loginSchema), ctrlWrapper(ctrl.loginUser))
 
 router.patch('/subscription', authenticate, validateBody(updateSubscriptionSchema), ctrlWrapper(ctrl.updateSubscriptionUser))
