@@ -1,15 +1,17 @@
 const registerUser = require('./registerUser')
+const verifyUser = require('./verifyUser')
+const resendVerifyEmail = require('./resendVerifyEmail')
 const loginUser = require('./loginUser')
 const updateSubscriptionUser = require('./updateSubscriptionUser')
 const getCurrentUser = require('./getCurrentUser')
 const logoutUser = require('./logoutUser')
-const verifyUser = require('./verifyUser')
 
 module.exports = {
   registerUser,
+  verifyUser,
+  resendVerifyEmail,
   loginUser,
   updateSubscriptionUser,
   getCurrentUser,
   logoutUser,
-  verifyUser,
 }

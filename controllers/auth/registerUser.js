@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-const nanoid = require('nanoid')
+const { nanoid } = require('nanoid')
 require('dotenv').config()
 
 const { BASE_URL } = process.env
