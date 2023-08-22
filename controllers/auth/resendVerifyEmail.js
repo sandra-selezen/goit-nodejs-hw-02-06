@@ -17,8 +17,19 @@ const resendVerifyEmail = async (req, res) => {
 
   const verifyEmail = {
     to: email,
-    subject: 'Verify your email',
-    html: `<div style="font-family: inherit"><p>Click <a target="_blank" href="${BASE_URL}/api/users/verify/${user.verificationToken}">verify email</a></p></div>`,
+    subject: 'Activate your GooseTrack account',
+    html: `
+    <div style="font-family: Arial, sans-serif; padding: 20px;">
+      <h2 style="color: #007bff;">Welcome to GooseTrack!</h2>
+      <p>We're glad you're here,</p>
+      <p>${email}</p>
+      <p>Just confirming you're you.</p>
+      <a target="_blank" href="${BASE_URL}/api/users/verify/${user.verificationToken} style="display: inline-block; background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">Activate Account</a>
+      <p>If you didn't sign up for an account, you can safely ignore this email.</p>
+      <p>Best regards,</p>
+      <p>The AugooseTeam</p>
+    </div>
+    `,
   }
 
   await sendEmail(verifyEmail)
